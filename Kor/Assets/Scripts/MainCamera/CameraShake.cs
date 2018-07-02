@@ -75,8 +75,8 @@ public class CameraShake : MonoBehaviour {
     }
 
     //TODO Create Perlin noise that returns -1, 1 with seed 
-    float GetPerlinNoise() {
-        return 0;
+    float GetPerlinNoise(float seed) {
+        return Mathf.PerlinNoise(-1, 1);
     }
 
     #endregion

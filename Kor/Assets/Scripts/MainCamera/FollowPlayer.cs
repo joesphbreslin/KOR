@@ -25,7 +25,7 @@ public class FollowPlayer : MonoBehaviour {
     }
 
     void AlignWithPlayer() {
-        transform.position = Vector3.Lerp(transform.position, player.position, Time.deltaTime * lerpSpeed);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(player.position.x, player.position.y, transform.position.z), Time.deltaTime * lerpSpeed);
         transform.rotation = Quaternion.Slerp(transform.rotation, player.rotation, Time.deltaTime * slerpSpeed);
     }
 }
