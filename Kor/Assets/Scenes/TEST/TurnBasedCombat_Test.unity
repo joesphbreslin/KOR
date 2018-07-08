@@ -202,6 +202,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 396504035}
+  - component: {fileID: 396504039}
+  - component: {fileID: 396504038}
+  - component: {fileID: 396504037}
+  - component: {fileID: 396504036}
   - component: {fileID: 396504034}
   m_Layer: 0
   m_Name: CombatManager
@@ -218,10 +222,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 396504033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f60a97bdb59a171408966b6b4b0dc4d7, type: 3}
+  m_Script: {fileID: 11500000, guid: e7b6163e8ec46464690664a85fc82970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCountSeed: 5.9
+  enemyByArea:
+  - area: 0
+    enemies:
+    - {fileID: 11400000, guid: e01c8bf8b69ed764cbd4082e75cf844d, type: 2}
+    - {fileID: 11400000, guid: e7f4505ec06a3b4498f25dc83917bf07, type: 2}
+  - area: 1
+    enemies:
+    - {fileID: 0}
+    - {fileID: 0}
 --- !u!4 &396504035
 Transform:
   m_ObjectHideFlags: 0
@@ -235,3 +247,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &396504036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 396504033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad46f7e0f2b4654cb186025ce1bc3cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &396504037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 396504033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1845656fd421124c83f50b083864a69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &396504038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 396504033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e84dc7b0e8dc9428db32e6f9db9415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies: []
+--- !u!114 &396504039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 396504033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d4aff16de2212d41abdc5564d9fe924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  area: 0
