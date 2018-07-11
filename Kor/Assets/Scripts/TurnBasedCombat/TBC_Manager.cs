@@ -9,15 +9,16 @@ public class TBC_Manager : MonoBehaviour {
     private float enemyCountSeed = 5.9f;
     TBC_AddEnemies tBC_AddEnemies;
     TBC_AddParty tBC_AddParty;
+    TBC_AddPlayer tBC_AddPlayer;
    
     void Start () {
         tBC_AddEnemies = GetComponent<TBC_AddEnemies>();
+        tBC_AddPlayer = GetComponent<TBC_AddPlayer>();
         tBC_AddParty = GetComponent<TBC_AddParty>();
 
-        tBC_AddEnemies.Init(RandomEnemyCount(enemyCountSeed));        
-        tBC_AddParty.Init();
-        
-        
+        tBC_AddEnemies.Init(RandomEnemyCount(enemyCountSeed));
+        tBC_AddPlayer.Init();
+        tBC_AddParty.Init();       
     }
 	
 	// Update is called once per frame

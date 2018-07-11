@@ -207,6 +207,7 @@ GameObject:
   - component: {fileID: 396504037}
   - component: {fileID: 396504036}
   - component: {fileID: 396504034}
+  - component: {fileID: 396504040}
   m_Layer: 0
   m_Name: CombatManager
   m_TagString: Untagged
@@ -232,8 +233,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: e7f4505ec06a3b4498f25dc83917bf07, type: 2}
   - area: 1
     enemies:
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: b23fdc4446809e24f8c204ec6a6aaee8, type: 2}
+    - {fileID: 11400000, guid: 164f3fe334e77b842a869fcb7327d767, type: 2}
 --- !u!4 &396504035
 Transform:
   m_ObjectHideFlags: 0
@@ -293,3 +294,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   area: 0
+--- !u!114 &396504040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 396504033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24c130f408add645b724e354e65f6d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: 0, y: 1}
