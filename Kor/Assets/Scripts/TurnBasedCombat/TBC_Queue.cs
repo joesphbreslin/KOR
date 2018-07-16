@@ -4,5 +4,22 @@ using UnityEngine;
 
 public class TBC_Queue : MonoBehaviour {
 
-    public Queue<GameObject> turnOrder = new Queue<GameObject>();
+    public List<GameObject> turnOrder = new List<GameObject>();
+
+    public void PrintQueue()
+    {
+        
+            Debug.Log(turnOrder.Count);
+        
+    }
+    public void AddTurnOrder(GameObject g)
+    {
+        turnOrder.Add(g);
+    }
+
+    public void RemoveTurnOrder(GameObject g)
+    {
+        turnOrder.Remove(g);
+    }
+
 }

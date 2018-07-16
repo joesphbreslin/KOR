@@ -6,14 +6,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef7699b0632a910499a5b268abf95466, type: 3}
   m_Name: Angry Kal
   m_EditorClassIdentifier: 
   enemyTitle: Angry Kal
   enemyType: 4
-  enemyMenuSprite: {fileID: 21300000, guid: b934ee80f79e8704eabe51f042800813, type: 3}
+  enemyMenuSprite: {fileID: 21300000, guid: 06988b8dce715a44a9f21339e1d8d1f4, type: 3}
   actionStructs:
   - eActionKey: 0
     actionText: 

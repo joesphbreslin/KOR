@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Manager
+  - TBC_Enemy
+  - TBC_Friend
+  - TBC_Player
   layers:
   - Default
   - TransparentFX

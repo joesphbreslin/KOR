@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyTitle: Tony
   enemyType: 1
-  enemyMenuSprite: {fileID: 21300000, guid: b934ee80f79e8704eabe51f042800813, type: 3}
+  enemyMenuSprite: {fileID: 21300000, guid: 081f0ebeb0682e645855f6ef7133c451, type: 3}
   actionStructs: []
   dialogueStructs: []
   hitPoints: 0
