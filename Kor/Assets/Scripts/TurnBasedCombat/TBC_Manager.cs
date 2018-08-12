@@ -5,37 +5,110 @@ using Types;
 
 public class TBC_Manager : MonoBehaviour {
 
-    public Area area; // this must be initialised to match global Area Value
-    private float enemyCountSeed = 5.9f;
-
-    public string[] partyMembers;
-
-    TBC_AddEnemies tBC_AddEnemies;
-    TBC_AddParty tBC_AddParty;
-    TBC_AddPlayer tBC_AddPlayer;
-    TBC_Queue tBC_Queue;
+    public EArea area; // this must be initialised to match global Area Value
+    public Character[] partyMembers;
+    TBC_AddCharacter addCharacters;
+    TBC_Order tBC_Order;
     TBC_UI tBC_UI;
-
-    public int turnOrderIndex = 0;
+    TBC_MenuLogic tBC_MenuLogic;
+    public Vector2 onGuiLocation;
+    public int turnOrderIndex;
 
     void Start () {
-        tBC_AddEnemies = GetComponent<TBC_AddEnemies>();
-        tBC_AddPlayer = GetComponent<TBC_AddPlayer>();
-        tBC_AddParty = GetComponent<TBC_AddParty>();
-        tBC_Queue = GetComponent<TBC_Queue>();
+
+        #region GetTBCComponents
+        addCharacters = GetComponent<TBC_AddCharacter>();
+        tBC_Order = GetComponent<TBC_Order>();
         tBC_UI = GetComponent<TBC_UI>();
+        tBC_MenuLogic = GetComponent<TBC_MenuLogic>();
+        #endregion
 
-        tBC_AddEnemies.Init(RandomEnemyCount(enemyCountSeed));
-        tBC_AddPlayer.Init();
-        tBC_AddParty.Init(partyMembers);
-
-        tBC_Queue.PrintQueue();
+        turnOrderIndex = 0;         //starts turn order 
+        addCharacters.Init();       //AddAllCharacters
+        tBC_Order.PopulateList();   //AddAllCharacters to Core List
+        
         tBC_UI.UpdateUi();
+        tBC_MenuLogic.Menu();
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    public IEnumerator NextPlayer(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        if (turnOrderIndex != tBC_Order.lCharacters.Count - 1)
+        {
+            turnOrderIndex++;
+        }
+        else
+        {
+            turnOrderIndex = 0;
+        }
+
+        tBC_UI.UpdateUi();
+    }
+
+    /// <summary>
+    ////DEBUG
+    /// </summary>
+
+    private void OnGUI()
+    {
+        TBC_Character currentCharacter = tBC_Order.lCharacters[turnOrderIndex].GetComponent<TBC_Character>();
+        GUI.Label(new Rect(onGuiLocation.x, onGuiLocation.y, 200, 100), "HP:\t " + currentCharacter.hitPoints +
+                                            "\nSTR:\t" + currentCharacter.strength +
+                                            "\nATK:\t" + currentCharacter.attack +
+                                            "\nDEF:\t" + currentCharacter.defence +
+                                            "\nAGL:\t" + currentCharacter.agility +
+                                            "\nSTM:\t" + currentCharacter.stamina, "box");
+    }
+
+    /*
+     *  Menu pop up every turn
+     *  Menu includes Limit option if special Bar is full 
+     *  Menu includes sub menu options for Attack, Skill, Special, Defend, maybe magic
+     *  Menu also contains Item and equipment changing
+     *  Menu Also Contains party swaping
+     *  MENU //Menu Navigation keys (TEMP) left, right, up, down arrows
+     *  
+     *      PAGE_1     
+     *          -ATTACK
+     *              CHOOSE TARGET
+     *                  ACTION
+     *                      [Next]
+     *             
+     *          -DEFEND
+     *              [Next]
+     *          -SPECIAL**          
+     *          -SKILL  **
+     *          -MAGIC  **
+     *            *-> [LIST]
+    *                  CHOOSE TARGET
+    *                        ACTION
+    *                           [Next]
+     *          
+     *      PAGE_2
+     *          -ITEM
+     *              [List]
+     *                  Choose Target
+     *                              [Next]
+     *                     
+     *          -EQIPMENT
+     *               [List]
+     *                  ChooseTarget
+     *                          [Next]
+     *                     
+     *          -SWAPPLAYER
+     *              [List]
+     *                  Select
+     *                      [Next]
+     *          
+     * 
+     */
+
+
+
+    void Update () {
 		
 	}
         
@@ -45,7 +118,7 @@ public class TBC_Manager : MonoBehaviour {
     * Add Enemies i.e count, position, stats etc                TBC_AddEnemies Entry Function();    [x]
     * Add Player and Party to positions, position, stats etc    TBC_AddParty Entry Function();      [x]
     * Animation to new scene                                    TBC_Camera Entry Function();        []
-    * Determine turn order with multi-variable analysis         TBC_TurnOrder Start Function()      []
+    * Determine turn order with multi-variable analysis         TBC_TurnOrder Start Function()      [X]
     * dialogue                                                  TBC_Actions                         []
     * begin queue                                               while() Queue TBC_TurnOrder         []                        
     * update camera target                                      TBC_Camera                          []
@@ -54,10 +127,7 @@ public class TBC_Manager : MonoBehaviour {
     * continue this until successful flee, death or victory     TBC_Manager
     * closing animation                                         TBC_Camera
     * rewards                                                   TBC_Manager
-    * 
+    * Make sure Attack is delayed until coroutine is finished maybe flag?
     */
-    private int RandomEnemyCount(float countSeed)
-    {
-        return Mathf.FloorToInt(Random.Range(1f, countSeed));
-    }
+  
 }

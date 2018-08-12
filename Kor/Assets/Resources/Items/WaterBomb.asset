@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ab02164319e7348a696c57c815ca6e, type: 3}
+  m_Name: WaterBomb
+  m_EditorClassIdentifier: 
+  itemType: 4
+  itemName: WaterBomb
+  itemValue: 200
+  itemEffect: 6
+  itemEffectMod: 500
+  particleSystem: {fileID: 1877352781205036, guid: 99731d9c9d1be884a8830e9b378557ad,
+    type: 2}

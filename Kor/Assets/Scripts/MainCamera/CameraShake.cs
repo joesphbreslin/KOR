@@ -26,7 +26,7 @@ public class CameraShake : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetButtonDown(TESTdamageButton))
+        if (Input.GetKeyDown(KeyCode.S))
         {
             Damage();
         }
@@ -47,7 +47,7 @@ public class CameraShake : MonoBehaviour {
     }
 
     #region Test Damage Function
-    void Damage()
+    public void Damage()
     {
         if (trauma.trauma < 1)
         {

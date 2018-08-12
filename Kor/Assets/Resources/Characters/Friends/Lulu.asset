@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2985ddbadfc3edf498c412b0e23f3508, type: 3}
+  m_Name: Lulu
+  m_EditorClassIdentifier: 
+  title: Lulu
+  characterType: 1
+  characterElement: 4
+  menuSprite: {fileID: 21300038, guid: 7b5b4b0b43d124e40b93b189147f96ae, type: 3}
+  actionStructs: []
+  dialogueStructs: []
+  hitPoints: 11
+  strength: 21
+  defence: 5
+  attack: 2
+  agility: 3
+  stamina: 11
+  xpReward: 0
+  currencyReward: 0
+  rewardDrops: []
+  specials:
+  - {fileID: 11400000, guid: 6b8a33e36b15dcd4e8b8bdd303b2e7d3, type: 2}
+  - {fileID: 11400000, guid: b6e0672bc2030904cbce4c81893c2eb2, type: 2}
+  - {fileID: 11400000, guid: 373b091e012f620438f3546e45027977, type: 2}
+  enemyPosition: {x: 0, y: 0}
+  animatorController: {fileID: 9100000, guid: 32adf91f965dcc74aa18bf3b636217c4, type: 2}
+  callAwakeMethods: 0

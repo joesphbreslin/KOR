@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2985ddbadfc3edf498c412b0e23f3508, type: 3}
+  m_Name: Angry Kal
+  m_EditorClassIdentifier: 
+  title: Angry Kal
+  characterType: 2
+  characterElement: 1
+  menuSprite: {fileID: 21300122, guid: 7308613134fe14143a03ca053a2b9b4b, type: 3}
+  actionStructs: []
+  dialogueStructs: []
+  hitPoints: 1
+  strength: 2
+  defence: 3
+  attack: 4
+  agility: 6
+  stamina: 7
+  xpReward: 1
+  currencyReward: 1
+  rewardDrops: []
+  specials:
+  - {fileID: 11400000, guid: 373b091e012f620438f3546e45027977, type: 2}
+  - {fileID: 11400000, guid: b6e0672bc2030904cbce4c81893c2eb2, type: 2}
+  enemyPosition: {x: 0, y: 0}
+  animatorController: {fileID: 9100000, guid: df3873ad64cfe834188162a1eda0b95f, type: 2}
+  callAwakeMethods: 0

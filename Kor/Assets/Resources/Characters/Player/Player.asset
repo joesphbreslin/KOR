@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2985ddbadfc3edf498c412b0e23f3508, type: 3}
+  m_Name: Player
+  m_EditorClassIdentifier: 
+  title: Player
+  characterType: 0
+  characterElement: 0
+  menuSprite: {fileID: 21300024, guid: 72113b1ac6c46f8408d81e6545e93156, type: 3}
+  actionStructs:
+  - eActionKey: 0
+    actionText: Idle
+    animationClip: {fileID: 7400000, guid: 52c92f2fd88654e429fb0248522f5fe4, type: 2}
+    particleSystem: {fileID: 0}
+  - eActionKey: 0
+    actionText: 
+    animationClip: {fileID: 0}
+    particleSystem: {fileID: 0}
+  - eActionKey: 0
+    actionText: 
+    animationClip: {fileID: 0}
+    particleSystem: {fileID: 0}
+  - eActionKey: 0
+    actionText: 
+    animationClip: {fileID: 0}
+    particleSystem: {fileID: 0}
+  - eActionKey: 0
+    actionText: 
+    animationClip: {fileID: 0}
+    particleSystem: {fileID: 0}
+  - eActionKey: 0
+    actionText: 
+    animationClip: {fileID: 0}
+    particleSystem: {fileID: 0}
+  dialogueStructs: []
+  hitPoints: 10
+  strength: 11
+  defence: 12
+  attack: 13
+  agility: 15
+  stamina: 17
+  xpReward: 20
+  currencyReward: 2
+  rewardDrops: []
+  specials:
+  - {fileID: 11400000, guid: 6b8a33e36b15dcd4e8b8bdd303b2e7d3, type: 2}
+  enemyPosition: {x: 0, y: 0}
+  animatorController: {fileID: 9100000, guid: 8d86172dbf77a5743a419a3d1659ded9, type: 2}
+  callAwakeMethods: 0
