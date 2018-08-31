@@ -13,8 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   specialName: WaterTest
   element: 1
-  specialType: 2
+  recovery: 0
+  specialType: 1
   attackMod: 290
   recoverMod: 0
+  specialMod: 0
   particleSystem: {fileID: 1877352781205036, guid: 99731d9c9d1be884a8830e9b378557ad,
     type: 2}

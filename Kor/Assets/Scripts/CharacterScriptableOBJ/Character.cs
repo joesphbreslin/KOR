@@ -69,8 +69,13 @@ public class Character : ScriptableObject
                     defence,
                     attack,
                     agility,
-                    stamina;
+                    stamina,
+                    xp;
 
+    public EEffect[] effectResistance;
+    public EElement[] elementResistance;
+    public EElement[] elementWeakness;
+        
     [Header("Rewards")]
     public int xpReward;
 

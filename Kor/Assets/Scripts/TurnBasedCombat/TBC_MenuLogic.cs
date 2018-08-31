@@ -335,7 +335,7 @@ public class TBC_MenuLogic : MonoBehaviour {
     }
     public void Item()
     {
-        GameObject g = Instantiate(selectedItem.particleSystem, transform, false) as GameObject;
+        GameObject g = Instantiate(selectedItem.itemParticleSystem, transform, false) as GameObject;
         g.transform.position = new Vector3(targetCharacter.transform.position.x, targetCharacter.transform.position.y + 1, targetCharacter.transform.position.z);
         Debug.Log(attackingCharacter.name + " is using " + selectedItem.name + " on " + targetCharacter.name);
     }

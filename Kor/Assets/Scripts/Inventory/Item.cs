@@ -10,9 +10,9 @@ public class Item : ScriptableObject
     public string itemName;
     public int itemValue;
 
-    public EItemEffect itemEffect;
+    public EEffect itemEffect;
     public int itemEffectMod;
 
-    public GameObject particleSystem;
-
+    public GameObject itemParticleSystem;
+    public string itemDescription;
 }
