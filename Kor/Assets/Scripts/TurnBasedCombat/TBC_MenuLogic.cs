@@ -15,6 +15,7 @@ public class TBC_MenuLogic : MonoBehaviour {
     public Vector3 arrowOffset;
     public GameObject arrow;
 
+    TBC_Specials tBC_specials;
     TBC_Order tBC_Order;
     TBC_Manager tBC_Manager;
     TBC_Targeting tBC_Targeting;
@@ -124,8 +125,9 @@ public class TBC_MenuLogic : MonoBehaviour {
     {     
         tBC_Order = GetComponent<TBC_Order>();
         tBC_Manager = GetComponent<TBC_Manager>();
-
+        tBC_specials = GetComponent<TBC_Specials>();
         tBC_Targeting = GetComponent<TBC_Targeting>();
+
         standardLocation = new Vector2(menuRectTransform.anchoredPosition.x, menuRectTransform.anchoredPosition.y);
         targetLocation = new Vector2(menuRectTransform.anchoredPosition.x - offScreenXSubtractModifier, menuRectTransform.anchoredPosition.y);
         smoothTarget = standardLocation;
@@ -221,10 +223,10 @@ public class TBC_MenuLogic : MonoBehaviour {
                         StartCoroutine(MoveTowards("ATTACK"));
                     break;
                 case "SPECIAL":
-                    Special();
+                    tBC_specials.Special(attackingCharacter, targetCharacter, selectedSpecial);
                     break;
                 case "SKILL":
-                    Skill();
+       
                     break;
                 case "ITEM":
                     Item();
@@ -269,14 +271,17 @@ public class TBC_MenuLogic : MonoBehaviour {
         DestroyButtonObjects();
         smoothTarget = OffScreenTargetPosition(false);
         MenuSizeDecrease(false);
-        foreach (Inventory._Item i in Inventory._instance.items)
+        foreach (Item i in Inventory._instance.items)
         {
-            GameObject g = Instantiate(buttonPrefab, buttonParent.transform, false) as GameObject;
-            Button b = g.GetComponent<Button>();
-            Text text = g.GetComponentInChildren<Text>();
-            text.text = i.item.name + "\t\t " + i.Amount;
-            //SwitchButtonHandler(0);}
-            b.onClick.AddListener(delegate { AssignSelectedItem(i.item); StartCoroutine(Targeting("ITEM")); });
+            if (i.itemAmount > 0)
+            {
+                GameObject g = Instantiate(buttonPrefab, buttonParent.transform, false) as GameObject;
+                Button b = g.GetComponent<Button>();
+                Text text = g.GetComponentInChildren<Text>();
+                text.text = i.name + "\t\t " + i.itemAmount;
+                //SwitchButtonHandler(0);}
+                b.onClick.AddListener(delegate { AssignSelectedItem(i); StartCoroutine(Targeting("ITEM")); });
+            }
         }
     }
 
@@ -323,16 +328,6 @@ public class TBC_MenuLogic : MonoBehaviour {
         }
     }
 
-    public void Special()
-    {
-        GameObject g = Instantiate(selectedSpecial.particleSystem, transform, false) as GameObject;
-        g.transform.position = new Vector3(targetCharacter.transform.position.x, targetCharacter.transform.position.y + 1, targetCharacter.transform.position.z);
-        Debug.Log(attackingCharacter.name + " is using " + selectedSpecial.name + " on " + targetCharacter.name);
-    }
-    public void Skill()
-    {
-
-    }
     public void Item()
     {
         GameObject g = Instantiate(selectedItem.itemParticleSystem, transform, false) as GameObject;

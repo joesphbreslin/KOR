@@ -12,9 +12,10 @@ namespace Types {
     public enum EElement {WATER=-3, LIGHTNING=-2, ICE=-1,   NONE=0,     FIRE=1,     POISON=2,       CYBER=3,    FLASH=4,    GAS=5};
     public enum EEffect  {                                  NONE=0,     BURNED=1,   POISONED=2,     HACKED=3,   STUNNED=4,  SLEEP=5 };
     public enum ERecovery {CURE=-1,                         NONE=0,     AGUA=1,     ANTIDOTE=2,     FIREWALL=3, SALTS=4,    CAFFINE=5, REMEDY=6};
-
    
     public enum EItemType {EQUIPMENT, WEAPON, BOOK, RECOVERY, DAMAGE , NONE};
+
+    public enum EGameState {TBC, FREE, MENU }
    
 
 }

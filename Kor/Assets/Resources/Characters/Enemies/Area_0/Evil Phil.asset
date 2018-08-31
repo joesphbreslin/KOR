@@ -22,12 +22,18 @@ MonoBehaviour:
   defence: 3
   attack: 4
   agility: 6
-  stamina: 7
+  actionPoints: 0
+  xp: 0
+  effectResistance: 
+  elementResistance: 
+  elementWeakness: 
   xpReward: 1
   currencyReward: 1
   rewardDrops: []
   specials:
+  - {fileID: 11400000, guid: ba4b48508a3bcb74b8145e74c1845b96, type: 2}
   - {fileID: 11400000, guid: b6e0672bc2030904cbce4c81893c2eb2, type: 2}
+  - {fileID: 11400000, guid: 6b8a33e36b15dcd4e8b8bdd303b2e7d3, type: 2}
   enemyPosition: {x: 0, y: 0}
   animatorController: {fileID: 9100000, guid: 71c7678975f6d1541a0d7c7e06d03805, type: 2}
   callAwakeMethods: 0

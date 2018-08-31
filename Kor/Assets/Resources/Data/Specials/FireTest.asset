@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Name: FireTest
   m_EditorClassIdentifier: 
   specialName: FireTest
-  element: 0
+  element: 1
+  recovery: 0
   specialType: 1
+  specialCost: 2
   attackMod: 2
   recoverMod: 0
+  specialMod: 2
   particleSystem: {fileID: 1877352781205036, guid: 99731d9c9d1be884a8830e9b378557ad,
     type: 2}

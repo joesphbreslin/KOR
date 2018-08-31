@@ -9,6 +9,7 @@ public class Specials : ScriptableObject {
     public EElement element;
     public ERecovery recovery;
     public ESpecialType specialType;
+    public float specialCost;
 
     public float attackMod;
     public float recoverMod;

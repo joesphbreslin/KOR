@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Name: WaterTest
   m_EditorClassIdentifier: 
   specialName: WaterTest
-  element: 1
+  element: 3
   recovery: 0
   specialType: 1
+  specialCost: 0
   attackMod: 290
   recoverMod: 0
   specialMod: 0

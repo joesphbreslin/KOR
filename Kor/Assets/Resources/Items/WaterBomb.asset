@@ -16,5 +16,7 @@ MonoBehaviour:
   itemValue: 200
   itemEffect: 6
   itemEffectMod: 500
-  particleSystem: {fileID: 1877352781205036, guid: 99731d9c9d1be884a8830e9b378557ad,
-    type: 2}
+  itemParticleSystem: {fileID: 0}
+  itemDescription: 
+  menuSprite: {fileID: 0}
+  itemAmount: 10

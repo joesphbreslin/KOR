@@ -69,7 +69,7 @@ public class Character : ScriptableObject
                     defence,
                     attack,
                     agility,
-                    stamina,
+                    actionPoints,
                     xp;
 
     public EEffect[] effectResistance;

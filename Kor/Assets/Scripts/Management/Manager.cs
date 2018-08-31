@@ -6,6 +6,8 @@ using System.IO;
 
 public class Manager : MonoBehaviour {
 
+    public EGameState gameState;
+
     #region Variables
     //Player Stats
     public float playerHealth, playerXp;

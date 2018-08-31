@@ -5,127 +5,127 @@ using UnityEngine;
 
 public class TBC_Specials : MonoBehaviour {
 
-    void Special(GameObject _attacker, GameObject _reciever, Specials _special)
+    public float    doubleDamageMult = 2, 
+                    damageMult = 1, 
+                    reducedDamageMult = .5f;
+
+    public float damageRandomRange = .5f;
+
+    public void Special(TBC_Character _attacker, TBC_Character _reciever, Specials _special)
     {
+       
         switch (_special.specialType)
         {
             case ESpecialType.ATTACK:
                 Attack(_attacker, _reciever, _special);      //I.E. Bomb / Magic type
                 break;
-            case ESpecialType.RECOVER:                  //I.E Recovery type
+            case ESpecialType.RECOVER:                                          //I.E Recovery type
                 Recover(_attacker, _reciever, _special);
                 break;
             default:
                 break;
         }
+        //deduct action points
+        _attacker.actionPoints -= _special.specialCost;
+        //Play Particle Effect
+        PlayParticleEffect(_reciever.transform, _special, 0.5f);
     }
 
-
-
-    //Deliver Damageorhealth
-    //Player particle effect
-  
-    
-    void Attack(GameObject _attacker, GameObject _reciever, Specials _special)
+    void Attack(TBC_Character _attacker, TBC_Character _reciever, Specials _special)
     {
+       
         float damage = 0;
         if (!IsImmune(_special.element, _reciever))
         {
-            if (_reciever.GetComponent<TBC_Character>().elementalWeakness.Contains(_special.element)) {
+          
+            if (_reciever.elementalWeakness.Contains(_special.element)) {
                 //DoubleDamage
-                damage = Damage(2f, .5f, _attacker, _reciever, _special);
+                damage = Damage(doubleDamageMult, damageRandomRange, _attacker, _reciever, _special);
                 //Add Effect
-                if (_special.element > 0)
-                {
-                    int effectIndex = (int)_special.element;
-                    _reciever.GetComponent<TBC_Character>().currentEffect = (EEffect)effectIndex; 
-                }
+                Effector(_special, _reciever, 1);
+
             } else
             {
                 //RegularDamage
-                damage = Damage(1f, .5f, _attacker, _reciever, _special);
+                damage = Damage(damageMult, damageRandomRange, _attacker, _reciever, _special);
+                //Add Effect
+                Effector(_special, _reciever, 2);
             }
         }
         else
         {
             //HalfDamage
-            damage = Damage(.5f, .5f, _attacker, _reciever, _special);           
+            damage = Damage(reducedDamageMult, damageRandomRange, _attacker, _reciever, _special);           
         }
         //Add Damage
-        _reciever.GetComponent<TBC_Character>().hitPoints -= damage;
-        //Play Particle Effect
-        PlayParticleEffect(_reciever, _special, .5f);
+        _reciever.hitPoints -= damage;    
     }
 
-
-    void Recover(GameObject _attacker, GameObject _reciever, Specials _special)
+    void Recover(TBC_Character _attacker, TBC_Character _reciever, Specials _special)
     {
+        
+        int effectIndex = (int)_reciever.currentEffect;
 
+        if (_special.recovery == ERecovery.REMEDY)
+        {
+            _reciever.currentEffect = EEffect.NONE;
+        }
+        else if(_special.recovery == (ERecovery)effectIndex)
+        {
+            _reciever.currentEffect = EEffect.NONE;
+        }else if (_special.recovery == ERecovery.CURE)
+        {
+            _reciever.hitPoints += Cure(_attacker, _special);
+        }
+        else
+        {
+            return;
+        }
     }
 
-    bool IsImmune(EElement element, GameObject _reciever)
-    {
-        TBC_Character tBC_Character = _reciever.GetComponent<TBC_Character>();
+    // Damage() retuns a damage value for use with special moves| 
+    // Algorithm: mult = Ran(mult - attackRange, mult + attackRange); 
+    // return _attacker.tbc_character.attack + SpecialModifier - reciever.TBC_Character.defence * mult;
 
-        if (tBC_Character.elementalResistance.Contains(element))
+    float Damage(float _damageMult,float damageRange, TBC_Character _attacker, TBC_Character _reciever, Specials _special)
+    {
+        float mult = Random.Range(_damageMult - damageRange, _damageMult + damageRange);
+        return (_attacker.attack + _special.specialMod - _reciever.defence) * mult;
+    }
+
+    float Cure(TBC_Character _attacker, Specials _special)
+    {
+        return _attacker.attack + _special.specialMod;        
+    }
+
+    bool IsImmune(EElement element, TBC_Character _reciever)
+    {
+        if (_reciever.elementalResistance.Contains(element))
             return true;
         else
             return false;
     }
 
-    #region ParticleEffect
-    void PlayParticleEffect(GameObject _reciever, Specials _special,float _yMod)
+    void PlayParticleEffect(Transform _reciever, Specials _special, float _yMod)
     {
         GameObject g = Instantiate(_special.particleSystem, transform, false) as GameObject;
-        g.transform.position = new Vector3(_reciever.transform.position.x, _reciever.transform.position.y + _yMod, _reciever.transform.position.z);
+        g.transform.position = new Vector3(_reciever.position.x, _reciever.position.y + _yMod, _reciever.position.z);
     }
-    #endregion
 
-    #region Damage
-    // Damage() retuns a damage value for use with special moves| 
-    // Algorithm: mult = Ran(mult - attackRange, mult + attackRange); 
-    // return _attacker.tbc_character.attack + SpecialModifier - reciever.TBC_Character.defence * mult;
-    float Damage(float _damageMult,float damageRange, GameObject _attacker, GameObject _reciever, Specials _special)
+    void Effector(Specials _special, TBC_Character _reciever, float probability)
     {
-        TBC_Character attackingCharacter = _attacker.GetComponent<TBC_Character>();
-        TBC_Character recivingCharacter = _reciever.GetComponent<TBC_Character>();
-
-        float mult = Random.Range(_damageMult - damageRange, _damageMult + damageRange);
-        return (attackingCharacter.attack + _special.specialMod - recivingCharacter.defence) * mult;
+        if (_special.element > 0)
+        {
+            if (Random.Range(0, probability) <= 1)
+            {
+                int effectIndex = (int)_special.element;
+                _reciever.currentEffect = (EEffect)effectIndex;
+                Debug.Log(_reciever.currentEffect);
+            }
+            else return;
+        }
     }
-    #endregion
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //public enum EElement { FIRE, WATER, CYBER, ROBOTIC, ICE, EARTH, POISON };
-    /*
-    public string specialName;
-    public EElement element;
-    public ESpecialType specialType;
-
-    public float attackMod;
-    public float recoverMod;
-
-    public GameObject particleSystem;
-
-
-
-    GameObject g = Instantiate(selectedSpecial.particleSystem, transform, false) as GameObject;
-    g.transform.position = new Vector3(targetCharacter.transform.position.x, targetCharacter.transform.position.y + 1, targetCharacter.transform.position.z);
-    Debug.Log(attackingCharacter.name + " is using " + selectedSpecial.name + " on " + targetCharacter.name);
-    }
-     * */
 
 
 }

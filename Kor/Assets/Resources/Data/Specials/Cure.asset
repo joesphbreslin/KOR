@@ -9,15 +9,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 381010ddf385c0947a86111428692a1d, type: 3}
-  m_Name: MassiveAttack
+  m_Name: Cure
   m_EditorClassIdentifier: 
-  specialName: MassiveAttack
-  element: 2
-  recovery: 0
-  specialType: 1
-  specialCost: 0
-  attackMod: 100
-  recoverMod: 0
+  specialName: 
+  element: 0
+  recovery: -1
+  specialType: 2
+  specialCost: 1
+  attackMod: 0
+  recoverMod: 3
   specialMod: 0
   particleSystem: {fileID: 1877352781205036, guid: 99731d9c9d1be884a8830e9b378557ad,
     type: 2}

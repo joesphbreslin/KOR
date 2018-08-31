@@ -55,12 +55,13 @@ public class TBC_Manager : MonoBehaviour {
     private void OnGUI()
     {
         TBC_Character currentCharacter = tBC_Order.lCharacters[turnOrderIndex].GetComponent<TBC_Character>();
-        GUI.Label(new Rect(onGuiLocation.x, onGuiLocation.y, 200, 100), "HP:\t " + currentCharacter.hitPoints +
+        GUI.Label(new Rect(onGuiLocation.x, onGuiLocation.y, 200, 120), "HP:\t " + currentCharacter.hitPoints +
                                             "\nSTR:\t" + currentCharacter.strength +
                                             "\nATK:\t" + currentCharacter.attack +
                                             "\nDEF:\t" + currentCharacter.defence +
                                             "\nAGL:\t" + currentCharacter.agility +
-                                            "\nSTM:\t" + currentCharacter.stamina, "box");
+                                            "\nAP:\t" + currentCharacter.actionPoints +
+                                            "\nEffector:\t" + currentCharacter.currentEffect.ToString(), "box");
     }
 
     /*

@@ -19,7 +19,7 @@ public class TBC_Character : MonoBehaviour {
                     defence,
                     attack,
                     agility,
-                    stamina;
+                    actionPoints;
 
     public Specials[] specials;
 
@@ -37,7 +37,7 @@ public class TBC_Character : MonoBehaviour {
         strength = character.strength;
         attack = character.attack;
         agility = character.agility;
-        stamina = character.stamina;
+        actionPoints = character.actionPoints;
         specials = character.specials;
 
         foreach(EElement element in character.elementResistance)

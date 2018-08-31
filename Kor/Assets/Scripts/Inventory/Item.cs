@@ -15,4 +15,7 @@ public class Item : ScriptableObject
 
     public GameObject itemParticleSystem;
     public string itemDescription;
+    public Sprite menuSprite;
+
+    public int itemAmount;
 }
