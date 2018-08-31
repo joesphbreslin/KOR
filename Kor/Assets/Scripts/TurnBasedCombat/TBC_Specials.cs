@@ -79,6 +79,7 @@ public class TBC_Specials : MonoBehaviour {
         GameObject g = Instantiate(_special.particleSystem, transform, false) as GameObject;
         g.transform.position = new Vector3(_reciever.transform.position.x, _reciever.transform.position.y + _yMod, _reciever.transform.position.z);
     }
+    #endregion
 
     #region Damage
     // Damage() retuns a damage value for use with special moves| 
